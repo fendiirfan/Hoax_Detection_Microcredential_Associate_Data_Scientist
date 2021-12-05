@@ -12,7 +12,7 @@ st.text("")
 
 # inputan user
 user_input = st.text_input('Input Sentence')
-model = ['SVM','LSTM']
+model = ['SVM']
 selectedModel = st.selectbox('Please Select the Model : ',model)
 
 # tombols
