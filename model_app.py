@@ -42,48 +42,9 @@ class model:
             # will join the words
             text=' '.join(text.split())
             return text
-
-        def applyKamusAlayandStopWord(text):
-            # load dicionary
-            kamusAlay = pd.read_csv('resource\colloquial-indonesian-lexicon.csv')
-            stopWord = pd.read_csv('resource\stopwords_id_satya.txt', header = None)
-            stopWord = stopWord[0].to_list()
-            kamusTambahan = pd.read_csv('resource\Kamu-Alay.csv')
-
-            # split
-            text = text.split(' ')
-            # apply kamusAlay
-            temp=[]
-            for i in range(len(text)):
-
-                try:
-                    # kamus alay
-                    index = kamusAlay.index[kamusAlay['slang'] == text[i]][0]
-                    text[i] = kamusAlay['formal'][index]
-                    # stop word
-                except:
-                    pass
-
-                try:
-                    # kamus alay
-                    index = kamusTambahan.index[kamusTambahan['kataAlay'] == text[i]][0]
-                    text[i] = kamusTambahan['kataBaik'][index]
-                    # stop word
-                except:
-                    pass
-
-                try:
-                    if text[i] in stopWord:
-                        text.remove(text[i])
-                except:
-                    pass
-
-                
-            text = ' '.join(text)
-            return text
+    
         
         text = clean_text(self.text) # clean text
-        text = applyKamusAlayandStopWord(text) # repalce kata alay
         return text
     
     def convert_text(self,text):
