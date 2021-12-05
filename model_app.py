@@ -106,8 +106,8 @@ class model:
 
     def predict_text(self):
         className = {
-            0 : 'NORMAL',
-            1 : 'BULLYING',
+            0 : 'Berita non-Hoax',
+            1 : 'Berita Hoax',
         }
         text = self.preprocessing()
         converted_text = self.convert_text(text)
@@ -119,6 +119,6 @@ class model:
 
 def progressBar(my_bar,start,end):
     for percent_complete in range(start,end):
-        time.sleep(0.1)
+        time.sleep(0.01)
             
-        my_bar.progress(percent_complete + 2)
+        my_bar.progress(percent_complete + 1)
